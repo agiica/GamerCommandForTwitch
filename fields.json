@@ -1,0 +1,118 @@
+{
+  "botName": {
+    "type": "text",
+    "label": "Name of the bot",
+    "value": "StreamElements"
+  },
+  "command": {
+    "type": "text",
+    "label": "Command that triggers without !",
+    "value": "gamer"
+  },
+  "period": {
+    "type": "number",
+    "label": "How often would you like to show? (s)",
+    "value": 600
+  },
+  "minValue": {
+    "type": "number",
+    "label": "Minimum percentage",
+    "value": 15
+  },
+  "minImage": {
+   "type": "image-input",
+   "label": "Image for minimum percentage"
+  },
+  "maxValue": {
+    "type": "number",
+    "label": "Maximum percentage",
+    "value": 90
+  },
+  "maxImage": {
+   "type": "image-input",
+   "label": "Image for maximum percentage"
+  },
+  "Position": {
+    "type": "dropdown",
+    "label": "Text position",
+    "value": "Center",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    },
+    "group": "Text Settings"
+  },
+  "titleColor": {
+    "type": "colorpicker",
+    "label": "Title - Font Color",
+    "value": "black",
+    "group": "Text Settings"
+  },
+  "titleSize": {
+    "label": "Text - Font Size",
+    "type": "slider",
+    "name": "",
+    "value": 40,
+    "max": 60,
+    "min": 10,
+    "steps": 1,
+    "group": "Text Settings"
+  },
+  "titleFamily": {
+    "label": "Title - Font Family",
+    "type": "googleFont",
+    "value": "Roboto",
+    "group": "Text Settings"
+  },
+  "titleWeight": {
+    "label": "Title - Font Weight",
+    "type": "dropdown",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "value": "700",
+    "group": "Text Settings"
+  },
+  "fontColor": {
+    "type": "colorpicker",
+    "label": "Username - Font Color",
+    "value": "black",
+    "group": "Text Settings"
+  },
+  "fontSize": {
+    "label": "Username - Font Size",
+    "type": "slider",
+    "name": "",
+    "value": 40,
+    "max": 60,
+    "min": 10,
+    "steps": 1,
+    "group": "Text Settings"
+  },
+  "fontFamily": {
+    "label": "Username - Font Family",
+    "type": "googleFont",
+    "value": "Roboto",
+    "group": "Text Settings"
+  },
+  "fontWeight": {
+    "label": "Username - Font Weight",
+    "type": "dropdown",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    },
+    "value": "700",
+    "group": "Text Settings"
+  }
+}

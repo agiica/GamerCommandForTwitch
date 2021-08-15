@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family={fontFamily}:{fontWeight}');
+
+:root {
+  --titleFamily: {titleFamily}, sans-serif;
+  --titleWeight: {titleWeight};
+  --titleSize: {titleSize}px;
+  --titleColor: {titleColor};
+  
+  --fontFamily: {fontFamily}, sans-serif;
+  --fontSize: {fontSize}px;
+  --fontWeight: {fontWeight};
+  --fontColor: {fontColor}
+  
+  --position: {position};
+}
+
+#picContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end; 
+}
+
+#titleContainer {
+  padding-right: 1em; 
+  padding-left: 1em; 
+  font-family: '{titleFamily}';
+  font-size: var(--titleSize);
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: var(--titleWeight);
+  color: var(--titleColor);
+}
+
+#userContainer {
+  padding-right: 1em; 
+  padding-left: 1em; 
+  font-family: '{fontFamily}';
+  font-size: var(--fontSize);
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: var(--fontWeight);
+  color: var(--fontColor);
+}
