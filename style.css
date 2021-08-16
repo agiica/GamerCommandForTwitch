@@ -5,22 +5,22 @@
   --titleWeight: {titleWeight};
   --titleSize: {titleSize}px;
   --titleColor: {titleColor};
+  --titlePosition: {titlePosition};
   
   --fontFamily: {fontFamily}, sans-serif;
   --fontSize: {fontSize}px;
   --fontWeight: {fontWeight};
-  --fontColor: {fontColor}
-  
-  --position: {position};
+  --fontColor: {fontColor};
+  --fontPosition: {fontPosition};
 }
 
 #picContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  width: 100%;
-  align-items: center;
   justify-content: flex-end; 
+  width: 100%;
+  max-height: 500px;
 }
 
 #titleContainer {
@@ -29,7 +29,7 @@
   font-family: '{titleFamily}';
   font-size: var(--titleSize);
   margin-bottom: 5px;
-  text-align: center;
+  text-align: var(--titlePosition);
   font-weight: var(--titleWeight);
   color: var(--titleColor);
 }
@@ -40,7 +40,7 @@
   font-family: '{fontFamily}';
   font-size: var(--fontSize);
   margin-bottom: 10px;
-  text-align: center;
+  text-align: var(--fontPosition);
   font-weight: var(--fontWeight);
   color: var(--fontColor);
 }
