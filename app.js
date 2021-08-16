@@ -1,44 +1,23 @@
 let messageArray = [];
 let percent = [];
 let username = [];
-let botName, command, minText, minValue, maxText, maxValue, debugOption, showFor, pic, animationIn, animationOut;
+let botName, command, minText, minValue, maxText, maxValue, debugOption, showFor, pic, timer, index;
 const titleBox = document.getElementById("titleText");
 const userBox = document.getElementById("userText");
-const picContainer = document.getElementById("all");
+var container = document.getElementById('all');
 
-function fadeIn(el, time) {
-  el.style.opacity = 0;
-
-  var last = +new Date();
-  var tick = function() {
-    el.style.opacity = +el.style.opacity + (new Date() - last) / time;
-    last = +new Date();
-
-    if (+el.style.opacity < 1) {
-      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
-    }
-  };
-
-  tick();
+function hideAll() { 
+  $("div").fadeOut(); 
+  index += 1;
+  setTimeout(show, 500);
 }
-
-function fadeOut(fadeTarget, time) {
-  var fadeEffect = setInterval(function () {
-    if (!fadeTarget.style.opacity) {
-      fadeTarget.style.opacity = 1;
-    }
-    if (fadeTarget.style.opacity > 0) {
-      fadeTarget.style.opacity -= 0.05;
-    } else {
-      clearInterval(fadeEffect);
-    }
-  }, time);
-}
+function showAll() { $("div").fadeIn(); }
 
 function debugFunc() {
-  console.log("debug");
-  picContainer.style.visibility = "visible";
-  fadeIn(picContainer, 1000);
+  console.log("debug1");
+  
+  showAll();
+  
   if (debugOption == "min") {
     pic.attr('src', '{{minImage}}'); 
     titleBox.textContent=minText;
@@ -51,31 +30,31 @@ function debugFunc() {
   }
 }
 
-function show() {  
-  console.log("show");
-  let idx, length;
-  length = percent.length;
-  picContainer.style.visibility = "visible";
-  fadeIn(picContainer, 1000);
-  for (idx = 0; idx < length; idx++) {
-    if (percent[idx] <= minValue) {
-      pic.attr('src', '{{minImage}}');
-      titleBox.textContent=minText;
-      userBox.textContent=username[idx].toString() + " // " + percent[idx] + "%";
-    } else {
-      pic.attr('src', '{{maxImage}}');
-      titleBox.textContent=maxText;
-      userBox.textContent=username[idx].toString() + " // " + percent[idx] + "%";
-    }
-    setTimeout(hide,showFor*1000);
+function show () {  
+  console.log("show " + index);
+  
+  if ( percent.length > 0 && index < percent.length) {
+    console.log("bent");
+    showAll();
+    showData();
+    
+  	setTimeout(hideAll, showFor * 1000);
+  } else {
+    index = 0;
   }
 }
-
-function hide() {
-  console.log("hide");
-  fadeOut(picContainer, 50);
+  
+function showData () {
+  if (percent[index] <= minValue) {
+    pic.attr('src', '{{minImage}}');
+    titleBox.textContent=minText;
+    userBox.textContent=username[index].toString() + " // " + percent[index] + "%";
+  } else {
+    pic.attr('src', '{{maxImage}}');
+    titleBox.textContent=maxText;
+    userBox.textContent=username[index].toString() + " // " + percent[index] + "%";
+  }
 }
-
 
 window.addEventListener('onWidgetLoad', function (obj) {
   const fieldData = obj["detail"]["fieldData"];
@@ -87,13 +66,12 @@ window.addEventListener('onWidgetLoad', function (obj) {
   maxText = fieldData["titleText"];
   debugOption = fieldData["debugOption"];
   showFor = fieldData["showFor"];
-  animationIn = fieldData["animationIn"];
-  animationOut = fieldData["animationOut"];
   pic = $("#pic");
-  picContainer.style.visibility = "hidden";
   
+  $("div").hide();
+  index = 0;
   if (debugOption == "off") {
-    setInterval(show, (fieldData["period"] * 1000));
+    timer = setInterval(show, (fieldData["period"] * 1000));
   } else {
     debugFunc();
   }
