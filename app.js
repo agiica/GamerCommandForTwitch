@@ -1,36 +1,79 @@
 let messageArray = [];
 let percent = [];
 let username = [];
-let botName;
-let command;
-let minValue;
-let maxValue;
+let botName, command, minText, minValue, maxText, maxValue, debugOption, showFor, pic, animationIn, animationOut;
+const titleBox = document.getElementById("titleText");
+const userBox = document.getElementById("userText");
+const picContainer = document.getElementById("all");
+
+function fadeIn(el, time) {
+  el.style.opacity = 0;
+
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / time;
+    last = +new Date();
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+
+  tick();
+}
+
+function fadeOut(fadeTarget, time) {
+  var fadeEffect = setInterval(function () {
+    if (!fadeTarget.style.opacity) {
+      fadeTarget.style.opacity = 1;
+    }
+    if (fadeTarget.style.opacity > 0) {
+      fadeTarget.style.opacity -= 0.05;
+    } else {
+      clearInterval(fadeEffect);
+    }
+  }, time);
+}
+
+function debugFunc() {
+  console.log("debug");
+  picContainer.style.visibility = "visible";
+  fadeIn(picContainer, 1000);
+  if (debugOption == "min") {
+    pic.attr('src', '{{minImage}}'); 
+    titleBox.textContent=minText;
+    userBox.textContent="vakesz // 1%";
+  }
+  if (debugOption == "max") {
+    pic.attr('src', '{{maxImage}}');
+    titleBox.textContent=maxText;
+    userBox.textContent="Agi // 100%";
+  }
+}
 
 function show() {  
   console.log("show");
-  let pic = $("#pic");
-  let i;
-  
-  for (i = 0; i < percent.length; i++) {
-    if (percent[i] <= minValue) {
-      pic.attr('src', '{{minImage}}');  
-      document.getElementById("titleText").textContent="Napi noob";
-      document.getElementById("userText").textContent=username[i].toString() + " // " + percent[i] + "%";
+  let idx, length;
+  length = percent.length;
+  picContainer.style.visibility = "visible";
+  fadeIn(picContainer, 1000);
+  for (idx = 0; idx < length; idx++) {
+    if (percent[idx] <= minValue) {
+      pic.attr('src', '{{minImage}}');
+      titleBox.textContent=minText;
+      userBox.textContent=username[idx].toString() + " // " + percent[idx] + "%";
     } else {
       pic.attr('src', '{{maxImage}}');
-      document.getElementById("titleText").textContent="Napi gamer";
-      document.getElementById("userText").textContent=username[i].toString() + " // " + percent[i] + "%";
+      titleBox.textContent=maxText;
+      userBox.textContent=username[idx].toString() + " // " + percent[idx] + "%";
     }
-    setTimeout(hide,5000);
+    setTimeout(hide,showFor*1000);
   }
 }
 
 function hide() {
   console.log("hide");
-  let pic = $("#pic");
-  pic.attr('src', '');
-  document.getElementById("titleText").textContent="";
-  document.getElementById("userText").textContent="";
+  fadeOut(picContainer, 50);
 }
 
 
@@ -39,9 +82,21 @@ window.addEventListener('onWidgetLoad', function (obj) {
   botName = fieldData["botName"].toLowerCase();
   command = fieldData["command"].toLowerCase();
   minValue = fieldData["minValue"];
+  minText = fieldData["fontText"];
   maxValue = fieldData["maxValue"];
+  maxText = fieldData["titleText"];
+  debugOption = fieldData["debugOption"];
+  showFor = fieldData["showFor"];
+  animationIn = fieldData["animationIn"];
+  animationOut = fieldData["animationOut"];
+  pic = $("#pic");
+  picContainer.style.visibility = "hidden";
   
-  setInterval(show, (fieldData["period"] * 1000));
+  if (debugOption == "off") {
+    setInterval(show, (fieldData["period"] * 1000));
+  } else {
+    debugFunc();
+  }
 });
 
 window.addEventListener('onEventReceived', function (obj) {
