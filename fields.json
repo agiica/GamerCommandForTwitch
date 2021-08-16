@@ -1,69 +1,99 @@
 {
+  "debugOption": {
+    "type": "dropdown",
+    "label": "DEBUG: Show output always",
+    "value": "off",
+    "options": {
+      "off": "Off",
+      "max": "Show Max",
+      "min": "Show Min"
+    },
+    "group": "Basics"
+  },
   "botName": {
     "type": "text",
     "label": "Name of the bot",
-    "value": "StreamElements"
+    "value": "StreamElements",
+    "group": "Basics"
   },
   "command": {
     "type": "text",
     "label": "Command that triggers without !",
-    "value": "gamer"
+    "value": "gamer",
+    "group": "Basics"
   },
   "period": {
     "type": "number",
     "label": "How often would you like to show? (s)",
-    "value": 600
+    "value": 5400,
+    "group": "Basics"
+  },
+  "showFor": {
+    "type": "number",
+    "label": "Show one person for? (s)",
+    "value": 5,
+    "group": "Basics"
   },
   "minValue": {
     "type": "number",
     "label": "Minimum percentage",
-    "value": 15
+    "value": 5,
+    "group": "Minimum Settings"
   },
   "minImage": {
    "type": "image-input",
-   "label": "Image for minimum percentage"
+   "label": "Image for minimum percentage",
+   "group": "Minimum Settings"
   },
   "maxValue": {
     "type": "number",
     "label": "Maximum percentage",
-    "value": 90
+    "value": 95,
+    "group": "Maximum Settings"
   },
   "maxImage": {
-   "type": "image-input",
-   "label": "Image for maximum percentage"
+    "type": "image-input",
+    "label": "Image for maximum percentage",
+    "group": "Maximum Settings"
   },
-  "Position": {
+  "titleText": {
+    "type": "text",
+    "label": "Title text",
+    "value": "Napi Gamer",
+    "group": "Title Settings"
+  },
+  "titlePosition": {
     "type": "dropdown",
-    "label": "Text position",
-    "value": "Center",
+    "label": "Title - Text position",
+    "value": "center",
     "options": {
       "left": "Left",
       "center": "Center",
       "right": "Right"
     },
-    "group": "Text Settings"
+    "group": "Title Settings"
   },
   "titleColor": {
     "type": "colorpicker",
     "label": "Title - Font Color",
     "value": "black",
-    "group": "Text Settings"
+    "group": "Title Settings"
   },
   "titleSize": {
-    "label": "Text - Font Size",
+    "label": "Title - Font Size",
     "type": "slider",
     "name": "",
     "value": 40,
     "max": 60,
     "min": 10,
     "steps": 1,
-    "group": "Text Settings"
+    "group": "Title Settings"
   },
   "titleFamily": {
     "label": "Title - Font Family",
     "type": "googleFont",
     "value": "Roboto",
-    "group": "Text Settings"
+    "group": "Title Settings"
   },
   "titleWeight": {
     "label": "Title - Font Weight",
@@ -77,29 +107,46 @@
       "900": "Black (900)"
     },
     "value": "700",
-    "group": "Text Settings"
+    "group": "Title Settings"
+  },
+  "fontText": {
+    "type": "text",
+    "label": "Title text",
+    "value": "Napi Noob",
+    "group": "Username Settings"
+  },
+  "fontPosition": {
+    "type": "dropdown",
+    "label": "Username - Text position",
+    "value": "center",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    },
+    "group": "Username Settings"
   },
   "fontColor": {
     "type": "colorpicker",
     "label": "Username - Font Color",
     "value": "black",
-    "group": "Text Settings"
+    "group": "Username Settings"
   },
   "fontSize": {
     "label": "Username - Font Size",
     "type": "slider",
     "name": "",
-    "value": 40,
+    "value": 30,
     "max": 60,
     "min": 10,
     "steps": 1,
-    "group": "Text Settings"
+    "group": "Username Settings"
   },
   "fontFamily": {
     "label": "Username - Font Family",
     "type": "googleFont",
     "value": "Roboto",
-    "group": "Text Settings"
+    "group": "Username Settings"
   },
   "fontWeight": {
     "label": "Username - Font Weight",
@@ -112,7 +159,7 @@
       "700": "Bold (700)",
       "900": "Black (900)"
     },
-    "value": "700",
-    "group": "Text Settings"
+    "value": "500",
+    "group": "Username Settings"
   }
 }
